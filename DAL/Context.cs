@@ -1,5 +1,5 @@
 
-using JEAN_P1_AP1.Entities;
+using Jean_P1_AP1.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Registro.DAL
