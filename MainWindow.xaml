@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Menu>
+            <MenuItem Header="_Registros">
+                <MenuItem x:Name="rCiudadMenuItem" Header="Registro de ciudades" Click="rCiudadMenuItem_Click"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
