@@ -1,20 +1,20 @@
-<Window x:Class="Jean_P1_AP1.UI.Registros.rCiudades"
+<Window x:Class="Jean_P1_AP1.UI.Registro.rCiudades"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Jean_P1_AP1"
         mc:Ignorable="d"
-        Title="Registro de ciudades" Height="450" Width="450">
+        Title="Registro de ciudades" Height="300" Width="380">
     <StackPanel Margin="30,30,0,0">
 
         <!-- Ciudad ID -->
         <Label Content="Ciudad ID"/>
         <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="ciudadIDTextBox" Width="200" Height="20" Text="{Binding CiudadID}" Margin="0,0,10,0"/>
-            <Button x:Name="BuscarBoton">
+            <TextBox x:Name="CiudadIDTextBox" Width="200" Height="20" Text="{Binding CiudadID}" Margin="0,0,10,0"/>
+            <Button x:Name="BuscarBoton" Click="BuscarBoton_Click">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Images/search.png" Height="16" Width="16" Click="BuscarBoton_Click"/>
+                    <Image Source="/Images/search.png" Height="16" Width="16"/>
                     <Label Content="Buscar"/>
                 </StackPanel>
             </Button>
@@ -43,8 +43,8 @@
                 </StackPanel>
             </Button>
             <!--Botón Eliminar-->
-            <Button x:Name="EliminarBoton">
-                <StackPanel Orientation="Horizontal" Click="EliminarBoton_Click">
+            <Button x:Name="EliminarBoton" Click="EliminarBoton_Click">
+                <StackPanel Orientation="Horizontal">
                     <Image Source="/Images/delete.png" Height="16" Width="16"/>
                     <Label Content="Eliminar"/>
                 </StackPanel>

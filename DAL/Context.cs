@@ -2,9 +2,9 @@
 using Jean_P1_AP1.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Registro.DAL
+namespace Jean_P1_AP1.DAL
 {
-    public class Context : DbContext{
+    public class Contexto : DbContext{
         public DbSet<Ciudad> Ciudades { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

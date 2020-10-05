@@ -1,20 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Jean_P1_AP1.Entities;
+using Jean_P1_AP1.BLL;
 
-namespace Jean_P1_AP1.UI.Registros
+namespace Jean_P1_AP1.UI.Registro
 {
     public partial class rCiudades : Window
     {
@@ -23,22 +12,87 @@ namespace Jean_P1_AP1.UI.Registros
         {
             InitializeComponent();
             ciudad = new Ciudad();
+            this.DataContext = ciudad;
+        }
+
+        public void Limpiar()
+        {
+            ciudad = new Ciudad();
+            this.DataContext = ciudad;
         }
     
         public void BuscarBoton_Click(object sender, RoutedEventArgs e)
         {
+            Ciudad ciudad = CiudadBLL.Buscar(Utilities.ToInt(CiudadIDTextBox.Text));
+
+            if(ciudad != null)
+            {
+                this.ciudad = ciudad;
+            }
+            else
+            {
+                this.ciudad = new Ciudad();
+                MessageBox.Show("No se encontró ninguna ciudad", "Registro ciudades",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            this.DataContext = ciudad;
         }
 
         public void NuevoBoton_Click(object sender, RoutedEventArgs e)
         {
+            Limpiar();
         }
 
         public void GuardarBoton_Click(object sender, RoutedEventArgs e)
         {
+            if(!Validar())
+                return;
+
+            if(CiudadBLL.Guardar(ciudad))
+            {
+                MessageBox.Show("Guardado con éxito", "Registro de ciudades", 
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                 MessageBox.Show("Hubo un error en el guardado", "Registro de ciudades", 
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            Limpiar();
         }
 
         public void EliminarBoton_Click(object sender, RoutedEventArgs e)
         {
+            if(CiudadBLL.Eliminar(Utilities.ToInt(CiudadIDTextBox.Text)))
+            {
+                MessageBox.Show("Se ha eliminado la ciudad", "Registro de ciudades", 
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Hubo un error en eliminar", "Registro de ciudades", 
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            Limpiar();
+        }
+
+        private bool Validar()
+        {
+            if(NombreTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("Introduzca un nombre", "Registro de ciudades", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            // else if(NombreTextBox.Text.Any(char.IsDigit) || NombreTextBox.Text.Any(char.IsSymbol) || NombreTextBox.Text.Any(char.IsControl)){
+            //     MessageBox.Show("Introduzca un nombre válido", "Registro de ciudades", MessageBoxButton.OK, MessageBoxImage.Error);
+            //     return false;
+            // }
+
+            return true;
+
         }
     }
 }
