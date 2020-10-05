@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace JEAN_P1_AP1.Entities
+namespace Jean_P1_AP1.Entities
 {
     public class Ciudad
     {
