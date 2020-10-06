@@ -2,6 +2,9 @@ using Jean_P1_AP1.Entities;
 using Jean_P1_AP1.DAL;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System;
+using System.Linq.Expressions;
 
 namespace Jean_P1_AP1.BLL
 {
@@ -15,6 +18,24 @@ namespace Jean_P1_AP1.BLL
 
             try{
                 paso = contexto.Ciudades.Any(c => c.CiudadID == id);
+                
+            } catch {
+                throw;
+
+            } finally {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+
+        public static bool Existe(string nombre)
+        {
+            Contexto contexto = new Contexto();
+            bool paso = false;
+
+            try{
+                paso = contexto.Ciudades.Any(c => c.Nombre.Equals(nombre));
                 
             } catch {
                 throw;
@@ -110,6 +131,23 @@ namespace Jean_P1_AP1.BLL
             }
 
             return ciudad;
+        }
+
+        public static List<Ciudad> GetList(Expression<Func<Ciudad, bool>> criterio)
+        {
+            Contexto contexto = new Contexto();
+            List<Ciudad> lista;
+
+            try{
+                lista = contexto.Ciudades.Where(criterio).AsNoTracking().ToList();
+
+            }catch{
+                throw;
+            } finally {
+                contexto.Dispose();
+            }
+
+            return lista;
         }
     }
 }

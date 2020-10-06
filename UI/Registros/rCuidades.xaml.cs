@@ -87,13 +87,17 @@ namespace Jean_P1_AP1.UI.Registros
                 MessageBox.Show("Introduzca un nombre", "Registro de ciudades", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            else if(NombreTextBox.Text.Any(char.IsDigit) || NombreTextBox.Text.Any(char.IsSymbol) || NombreTextBox.Text.Any(char.IsPunctuation)){
+            else if(CiudadBLL.Existe(NombreTextBox.Text))
+            {
+                MessageBox.Show("Esta ciudad ya existe", "Registro de ciudades", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if(NombreTextBox.Text.Any(char.IsSymbol) || NombreTextBox.Text.Any(char.IsPunctuation)){
                 MessageBox.Show("Introduzca un nombre válido", "Registro de ciudades", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
             return true;
-
         }
     }
 }

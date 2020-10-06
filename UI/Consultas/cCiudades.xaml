@@ -21,7 +21,7 @@
                 <Label Content="Critero:"/>
                 <TextBox x:Name="CriterioTextBox" Width="100" Height="25"/>
             </StackPanel>
-            <Button x:Name="ConsultarButton" Height="30" Width="85" Margin="0,20,0,0" Click="ConsultarButton_Click">
+            <Button x:Name="ConsultarButton" Width="100" Height="35" Margin="0,20,0,0" Click="ConsultarButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="18" Height="18" Source="/Images/search.png"/>
                     <Label Content="Buscar"/>
@@ -31,7 +31,7 @@
 
         <StackPanel HorizontalAlignment="Left">
         
-            <DataGrid x:Name="DatosDataGrid" Height="150" Width="150" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid x:Name="DatosCiudades" Height="160" Width="230" Margin="10,0,0,0" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="CiudadID" Binding="{Binding CiudadID}"/>
                     <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"/>
