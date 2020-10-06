@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Jean_P1_AP1.UI.Registro;
+using Jean_P1_AP1.UI.Registros;
+using Jean_P1_AP1.UI.Consultas;
 
 namespace Jean_P1_AP1
 {
@@ -29,6 +30,11 @@ namespace Jean_P1_AP1
         public void rCiudadMenuItem_Click(object sender, RoutedEventArgs e)
         {
             new rCiudades().Show();
+        }
+
+        public void cCiudadMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            new cCiudades().Show();
         }
     }
 }

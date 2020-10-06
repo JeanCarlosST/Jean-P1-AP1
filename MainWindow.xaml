@@ -11,6 +11,10 @@
             <MenuItem Header="_Registros">
                 <MenuItem x:Name="rCiudadMenuItem" Header="Registro de ciudades" Click="rCiudadMenuItem_Click"/>
             </MenuItem>
+
+            <MenuItem Header="_Consultas">
+                <MenuItem x:Name="cCiudadMenuItem" Header="Consulta de ciudades" Click="cCiudadMenuItem_Click"/>
+            </MenuItem>
         </Menu>
     </Grid>
 </Window>

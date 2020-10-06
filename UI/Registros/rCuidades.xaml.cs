@@ -1,9 +1,10 @@
 using System;
+using System.Linq;
 using System.Windows;
 using Jean_P1_AP1.Entities;
 using Jean_P1_AP1.BLL;
 
-namespace Jean_P1_AP1.UI.Registro
+namespace Jean_P1_AP1.UI.Registros
 {
     public partial class rCiudades : Window
     {
@@ -86,10 +87,10 @@ namespace Jean_P1_AP1.UI.Registro
                 MessageBox.Show("Introduzca un nombre", "Registro de ciudades", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            // else if(NombreTextBox.Text.Any(char.IsDigit) || NombreTextBox.Text.Any(char.IsSymbol) || NombreTextBox.Text.Any(char.IsControl)){
-            //     MessageBox.Show("Introduzca un nombre válido", "Registro de ciudades", MessageBoxButton.OK, MessageBoxImage.Error);
-            //     return false;
-            // }
+            else if(NombreTextBox.Text.Any(char.IsDigit) || NombreTextBox.Text.Any(char.IsSymbol) || NombreTextBox.Text.Any(char.IsPunctuation)){
+                MessageBox.Show("Introduzca un nombre válido", "Registro de ciudades", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
             return true;
 
